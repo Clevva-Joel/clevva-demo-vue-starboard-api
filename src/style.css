@@ -1,0 +1,144 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  position: relative;
+}
+
+pre {
+  font-family: inherit;
+}
+
+#app {
+  height: 100%;
+}
+
+.grid-view {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-view-item {
+  position: relative;
+  height: 128px;
+  text-decoration: none !important;
+  cursor: pointer;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.9), 0 1px 2px -1px rgba(0, 0, 0, 0.9);
+}
+.grid-view-item img.grid-view-poster-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.grid-view-item img.grid-view-poster-image:hover {
+  filter: grayscale(0.8);
+}
+.grid-view-item > *:is(.grid-view-item-body, img.grid-view-poster-image),
+.grid-view-item > .grid-view-item-body > img.grid-view-poster-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.grid-view-item > .grid-view-item-body {
+  padding: 8px;
+}
+.grid-view-item > .grid-view-item-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.8;
+  color: white;
+  background-color: black;
+}
+.grid-view-item:hover > .grid-view-item-title {
+  color: #ccc;
+}
+.position-absolute-center {
+  position: absolute;;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.position-fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body[data-theme="dark"] .app-logo-container {
+  background-color: #949494;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.btn-sm-square {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+
+.btn.btn-xs-square {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.btn.btn-xs {
+  padding: 0.25rem 0.5rem
+}
+
+.btn.btn-xs,
+.btn.btn-xs-square,
+.btn.btn-xs-square *,
+.btn.btn-xs * {
+  font-size: 12px !important;
+}
+
+.btn.btn-rounded {
+  border-radius: 50%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.error-circle {
+  width: 256px;
+  height: 256px;
+}
+
+@media (min-width: 640px) {
+  .grid-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .grid-view {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-view-item {
+    height: 156px;
+  }
+}
+@media (min-width: 991px) {
+  .grid-view-item {
+    height: 192px;
+  }
+}
+@media (min-width: 1200px) {
+  .grid-view {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

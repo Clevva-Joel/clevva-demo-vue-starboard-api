@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/clevva.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link id="theme-link" rel="stylesheet" href="/themes/aura-light-green/theme.css">
+  </head>
+  <body data-theme="light">
+    <div id="app"></div>
+    <script>
+        function loadTheme() {
+            try {
+                const themeLink = document.getElementById("theme-link");
+                const currentThemeMode = localStorage.getItem('themeMode');
+
+                if (!!themeLink && ['light', 'dark'].includes(currentThemeMode)) {
+                    const regexResult = /.+-(light|dark)-.+\/theme\.css/i.exec(themeLink.getAttribute('href'));
+
+                    if (!!regexResult && !!regexResult[1]) {
+                        const newThemeHref = themeLink.getAttribute('href').replace(
+                            /(.+-)(?:light|dark)(-.+\/theme\.css)/i,
+                            `$1${currentThemeMode}$2`
+                        );
+                        themeLink.setAttribute('href', newThemeHref);
+                        document.body.setAttribute('data-theme', currentThemeMode)
+                    }
+                }
+            } catch (e) {}
+        }
+
+        loadTheme();
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
